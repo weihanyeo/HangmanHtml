@@ -195,6 +195,12 @@ a {
   color: #a1d3ff;
 }
 
+.footer__social-list{
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
 .sub-heading {
   font-size: 1.75rem;
   width: 30ch;
@@ -292,4 +298,13 @@ html {
 
 #creditsSection {
   height: 1000px;
+}
+
+#creditSection{
+  margin-top: 10vh;
+}
+
+.credit-container {
+  background-color: #fff;
+  color: #232222;
 }
