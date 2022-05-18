@@ -1,0 +1,36 @@
+#header_ribbon {
+    overflow: hidden;
+    background-color: grey;
+    padding: 2px 1px;
+    transition: 0.8s;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+#header_ribbon a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1px;
+    border-radius: 2px;
+}
+
+#header_ribbon #Title {
+    font-size: 35px;
+    font-weight: bold;
+    transition: 0.8s;
+}
+
+#header_ribbon a:hover {
+    color: #01FE06;
+}
+
+#header_ribbon_right {
+    float: right;
+}
+

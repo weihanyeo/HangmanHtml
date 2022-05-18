@@ -1,0 +1,88 @@
+/****************** SECTION FOOTER *****************/
+
+.footer {
+  padding: 20px 20px;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/******** SOCIAL-LIST ********/
+ul.footer__social-list {
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+ul.footer__social-list {
+  justify-content: flex-start;
+}
+
+ul.footer__social-list > li {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+ul.footer__social-list > li {
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+/* scroll back to top */
+.generate-back-to-top {
+  font-size: 20px;
+  border-radius: 3px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  line-height: 40px;
+  width: 40px;
+  text-align: center;
+  z-index: 10;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* hover over icon */ 
+a:hover {
+  transition: all 0.25s ease 0s;
+  opacity: 0.6; 
+}
+
+ /* unvisited link */
+ a:link {
+  color: blue;
+}
+
+/* selected link */
+a:active {
+  color: yellow;
+} 
+
+#footer_ribbon {
+  overflow: hidden;
+  background-color: grey;
+  padding: 2px 1px;
+  transition: 0.8s;
+  position: float;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+#footer_ribbon a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1px;
+  border-radius: 2px;
+}
+
+#header_ribbon #Text {
+  font-size: 35px;
+  font-weight: bold;
+  transition: 0.8s;
+}

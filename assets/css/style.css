@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rokkitt:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+* {
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  background: #4b0d7e;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Indie Flower', cursive;
+  font-weight: 800;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+p,
+i,
+b,
+a {
+  font-size: 1.8rem;
+}
+
+/* Game */
+
+.game-container {
+  padding: 20px 30px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  background-color: #141313;
+}
+
+.figure-container {
+  fill: transparent;
+  stroke: rgb(255, 255, 255);
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.figure-part {
+  display: block;
+}
+
+.start-face {
+  display: none;
+}
+
+.lose-face {
+  display: none;
+}
+
+.word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+#wrong-letters p {
+  margin-top: 2rem;
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+#wrong-letters span {
+  font-size: 2rem;
+}
+
+.letter {
+  border-bottom: 3px solid #fffdfd;
+  font-size: 4rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px;
+  height: 50px;
+  width: 30px;
+  color: #ffffff;
+}
+
+.final-msg-container {
+  display: none;
+  text-align: center;
+}
+
+#final-message {
+  margin-top: 0.5rem;
+  font-size: 2rem;
+}
+
+#letter-error {
+  display: none;
+  color: #ff3333;
+  font-weight: bolder;
+  padding: 5px;
+}
+
+#hint p {
+  margin-top: 5rem;
+  font-size: 1.5rem;
+}
+
+#play-btn {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-left: 5px;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+#play-btn:hover {
+  background-color: #96cdfc;
+}
+
+#start-btn {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-left: 5px;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+#start-btn:hover {
+  background-color: #96cdfc;
+}
+
+#section-btn {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-left: 5px;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+#section-btn:hover {
+  background-color: #96cdfc;
+}
+
+#userInput {
+  display: none;
+}
+
+#guess {
+  font-size: 1.8rem;
+}
+
+#submit-btn {
+  font-size: 1.9rem;
+  border-radius: 5px;
+}
+
+#score span {
+  font-size: 2rem;
+}
+
+#score .lose {
+  color: #ff3333;
+}
+
+#score .win {
+  color: #62c962;
+}
+
+.sr-only {
+  font-size: 2rem;
+}
+
+/* Header */
+
+.gameTitle {
+  font-size: 8rem;
+  display: flex;
+  align-items: center;
+  animation: glow 2s ease-in-out infinite alternate;
+  justify-content: center;
+  color: #a1d3ff;
+}
+
+.sub-heading {
+  font-size: 1.75rem;
+  width: 30ch;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 24px #ffffff;
+  }
+  to {
+    text-shadow: 0 0 30px #ffffff, 0 0 10px #ffffff;
+  }
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 600px) {
+  .page-heading {
+    font-size: 5rem;
+  }
+
+  .sub-heading {
+    font-size: 3rem;
+  }
+}
+
+.grow {
+  padding: 5px 5px 20px 20px;
+  height: 60px;
+  position: relative;
+  transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+  overflow: hidden;
+}
+.grow:hover {
+  height: 230px;
+}
+
+.Social_Media {
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+/********** Scroll-to-top button ************/
+button#scrollButton {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #972297;
+  color: #fff;
+
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+button#scrollButton:hover {
+  opacity: 0.7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#sectionbuff {
+  height: 60px;
+  background-color: black;
+}
+
+#sectionbuff2 {
+  height: 80px;
+  background-color: #4b0d7e;
+}
+
+#buff {
+  height: 80px;
+  background-color: black;
+}
+
+#section1 {
+  height: 650px;
+  background-color: black;
+}
+
+#gameSection {
+  height: 650px;
+} 
+
+#creditsSection {
+  height: 1000px;
+}
