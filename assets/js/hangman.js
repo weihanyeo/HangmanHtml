@@ -25,37 +25,38 @@ const figureParts = document.querySelectorAll(".figure-part");
 /* Function to start the game.
     Picks a random number from the words array and use index to assign selectedWord and selectedHint */
 function startGame() {
-
   //Dictionary API
-    while (true) {
-      var xhttp1 = new XMLHttpRequest();
-      xhttp1.open("GET", "https://random-word-api.herokuapp.com/word", false);
-      xhttp1.send();
-      let wordRes = xhttp1.responseText;
-      let wordParsedRes = JSON.parse(wordRes);
+  while (true) {
+    var xhttp1 = new XMLHttpRequest();
+    xhttp1.open("GET", "https://random-word-api.herokuapp.com/word", false);
+    xhttp1.send();
+    let wordRes = xhttp1.responseText;
+    let wordParsedRes = JSON.parse(wordRes);
 
-      var xhttp2 = new XMLHttpRequest();
-      xhttp2.open(
-        "GET",
-        "https://api.dictionaryapi.dev/api/v2/entries/en/" + wordParsedRes[0],
-        false
+    var xhttp2 = new XMLHttpRequest();
+    xhttp2.open(
+      "GET",
+      "https://api.dictionaryapi.dev/api/v2/entries/en/" + wordParsedRes[0],
+      false
+    );
+    xhttp2.send();
+    let defRes = xhttp2.responseText;
+    let defParsedRes = JSON.parse(defRes);
+
+    if (defParsedRes.title == "No Definitions Found") {
+      console.log(
+        "No Definitions Found for current word, to look for new word again"
       );
-      xhttp2.send();
-      let defRes = xhttp2.responseText;
-      let defParsedRes = JSON.parse(defRes);
-
-      if (defParsedRes.title == "No Definitions Found") {
-        console.log("No Definitions Found for current word, to look for new word again");
-      } else {
-        var word = wordParsedRes[0];
-        var hint =
-          defParsedRes[0].meanings[0].definitions[0].definition +
-          " (" +
-          defParsedRes[0].meanings[0].partOfSpeech +
-          ")";
-        break;
-      }
+    } else {
+      var word = wordParsedRes[0];
+      var hint =
+        defParsedRes[0].meanings[0].definitions[0].definition +
+        " (" +
+        defParsedRes[0].meanings[0].partOfSpeech +
+        ")";
+      break;
     }
+  }
 
   selectedWord = word.toUpperCase();
   selectedHint = hint.toUpperCase();
@@ -69,6 +70,7 @@ function startGame() {
 
   // Display user input on game start
   $("#userInput").css("display", "block");
+  $("#key-btns").css("display", "block");
 
   displayWord();
 }
@@ -201,7 +203,8 @@ function validateLetter(input) {
             push it to array and display the letter else show notification letter has already been used.*/
       if (selectedWord.includes(letter)) {
         if (!correctLetters.includes(letter)) {
-          correctLetters.push(letter);      `-`
+          correctLetters.push(letter);
+          `-`;
 
           displayWord();
         } else {
@@ -259,25 +262,18 @@ window.addEventListener("scroll", () => {
   }
 });
 
-window.onscroll = function() {
-  scrollFunction()
+window.onscroll = function () {
+  scrollFunction();
 };
-   
+
 function scrollFunction() {
-  if (document.body.scrollTop > 50 ||
-      document.documentElement.scrollTop > 50)
-  {
-      document.getElementById("header_ribbon")
-                  .style.padding = "1px 0.5px";
-           
-      document.getElementById("Title")
-              .style.fontSize = "24px";
-  }
-  else {
-      document.getElementById("header_ribbon")
-                  .style.padding = "2px 1px";
-                   
-      document.getElementById("Title")
-                  .style.fontSize = "35px";
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("header_ribbon").style.padding = "1px 0.5px";
+
+    document.getElementById("Title").style.fontSize = "24px";
+  } else {
+    document.getElementById("header_ribbon").style.padding = "2px 1px";
+
+    document.getElementById("Title").style.fontSize = "35px";
   }
 }
