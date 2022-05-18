@@ -133,18 +133,18 @@
             <circle cx="140" cy="80" r="30" class="figure-part" />
 
             <!-- Start Face -->
-            <circle cx="130" cy="70" r="3" class="start-face" />
-            <circle cx="150" cy="70" r="3" class="start-face" />
-            <circle cx="140" cy="90" r="5" class="start-face" />
+            <circle cx="130" cy="70" r="3" class="start-face face-part" />
+            <circle cx="150" cy="70" r="3" class="start-face face-part" />
+            <circle cx="140" cy="90" r="5" class="start-face face-part" />
 
             <!-- Lose Face -->
-            <line x1="135" y1="80" x2="125" y2="70" class="lose-face" />
-            <line x1="125" y1="80" x2="135" y2="70" class="lose-face" />
+            <line x1="135" y1="80" x2="125" y2="70" class="lose-face face-part" />
+            <line x1="125" y1="80" x2="135" y2="70" class="lose-face face-part" />
 
-            <line x1="155" y1="80" x2="145" y2="70" class="lose-face" />
-            <line x1="145" y1="80" x2="155" y2="70" class="lose-face" />
+            <line x1="155" y1="80" x2="145" y2="70" class="lose-face face-part" />
+            <line x1="145" y1="80" x2="155" y2="70" class="lose-face face-part" />
 
-            <circle cx="140" cy="90" r="5" class="lose-face" />
+            <circle cx="140" cy="90" r="5" class="lose-face face-part" />
 
             <!-- Body -->
             <line x1="140" y1="110" x2="140" y2="200" class="figure-part" />
@@ -171,7 +171,7 @@
           <div id="hint"></div>
 
           <!-- Calls validateForm() method to send user input to variable -->
-          <form name="userInput" id="userInput" onsubmit="return false">
+          <form name="userInput" id="userInput">
             <input type="text" maxlength="1" name="guess" id="guess" placeholder="Enter guess here"
               aria-label="Enter guess here" />
             <button onclick="validateForm()" id="submit-btn">Submit</button>
