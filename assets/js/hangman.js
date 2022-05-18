@@ -72,6 +72,10 @@ function startGame() {
   $("#userInput").css("display", "block");
   $("#key-btns").css("display", "block");
 
+  // Change alphabet buttons back to white and clickable
+  $(".key-btn").css("background", "#EFEFEF");
+  $(".key-btn").prop("disabled", false);
+
   displayWord();
 }
 
@@ -144,6 +148,9 @@ function updateWrongLettersEl() {
   if (wrongLetters.length === figureParts.length) {
     //set game finish to true to stop keydown events
     gameFinish = true;
+
+    // Alphabet buttons will be unclickable once game is finished
+    $(".key-btn").prop("disabled", true); 
 
     //Switch to lose face by hiding start face and displaying lose face
     $(".start-face").css("display", "none");
@@ -224,6 +231,11 @@ function validateLetter(input) {
     }
   }
 }
+
+// Alphabet button to turn grey after being click once during gameplay
+$(".key-btn").click(function () {
+  $(this).css("background", "grey");
+});
 
 // Event listener on Play Again button to empty arrays and clear game board before starting a new game
 playAgainBtn.addEventListener("click", () => {
