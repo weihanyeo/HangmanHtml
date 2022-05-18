@@ -110,6 +110,9 @@ function displayWord() {
     //set game finish to true to stop input guesses
     gameFinish = true;
 
+    // Alphabet buttons will be unclickable once game is finished
+    $(".key-btn").prop("disabled", true);
+    
     // Display final win status
     $("#final-message").html("Good Job!! You Won!!!");
     $("#final-message").css("color", "#62c962");
