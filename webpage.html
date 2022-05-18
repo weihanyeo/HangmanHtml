@@ -171,7 +171,7 @@
           <div id="hint"></div>
 
           <!-- Calls validateForm() method to send user input to variable -->
-          <form name="userInput" id="userInput">
+          <form name="userInput" id="userInput" onsubmit="return false">
             <input type="text" maxlength="1" name="guess" id="guess" placeholder="Enter guess here"
               aria-label="Enter guess here" />
             <button onclick="validateForm()" id="submit-btn">Submit</button>
