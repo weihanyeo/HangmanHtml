@@ -69,7 +69,7 @@
       </section>
 
       <h2 class="sub-heading">Are you up for the challenge?</h2>
-      <h2>This dictionary contains some of the most uncommon used english words</h2>
+      <h2>This dictionary contains A-Z of the most uncommon used english words</h2>
 
       <!-- Hangman game instructions -->
       <div class="game-container grow">
@@ -81,7 +81,7 @@
           If you guess an incorrect letter <b>10 times</b>, you will lose the
           game.<br />
           <b>Only</b> letters in the English alphabet will accepted. <b>Case insensitive.</b><br />
-          For multiplayer, player 1 finishes, player 2 comtinues.<br />
+          For multiplayer, player 1 finishes, player 2 comtinues et cetera.<br />
         </p>
       </div>
       <div class="text-center justify-content-center align-items-center">
@@ -98,33 +98,19 @@
 
     <div class="container game-container" id="gameSection">
       <div class="row">
-        <div class="col-sm-4" id="score">
-          <h3>Player 1</h3>
-          <p>
-            GAME SCORE: Win: <span class="win">0</span> Lose:
-            <span class="lose">0</span>
-          </p>
-        </div>
-        <div class="col-sm-4" id="score">
-          <h3>Player 2</h3>
-          <p>
-            GAME SCORE: Win: <span class="win">0</span> Lose:
-            <span class="lose">0</span>
-          </p>
-        </div>
-        <div class="col-sm-4" id="score">
-          <h3>Player 3</h3>
+        <div class="col-sm-12 col-md-6 col-lg-4 text-center" id="score">
+          <h3>Player ONE</h3>
           <p>
             GAME SCORE: Win: <span class="win">0</span> Lose:
             <span class="lose">0</span>
           </p>
         </div>
 
-        <!-- Start Hangman game -->
-        <div class="col-sm-12 col-md-6 text-center">
+        <!-- Start Hangman game  col-12 col-md-6 col-lg-4 -->
+        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
           <svg height="345" width="200" class="figure-container">
             <!-- Rod -->
-            <line x1="20" y1="330" x2="230" y2="330" class="figure-part" />
+            <line x1="30" y1="330" x2="230" y2="330" class="figure-part" />
             <line x1="30" y1="20" x2="30" y2="330" class="figure-part" />
             <line x1="30" y1="20" x2="240" y2="20" class="figure-part" />
             <line x1="140" y1="20" x2="140" y2="50" class="figure-part" />
@@ -144,8 +130,6 @@
             <line x1="155" y1="80" x2="145" y2="70" class="lose-face" />
             <line x1="145" y1="80" x2="155" y2="70" class="lose-face" />
 
-            <circle cx="140" cy="90" r="5" class="lose-face" />
-
             <!-- Body -->
             <line x1="140" y1="110" x2="140" y2="200" class="figure-part" />
 
@@ -160,7 +144,7 @@
           </svg>
         </div>
 
-        <div class="col-sm-12 col-md-6 text-center">
+        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
           <div class="text-center justify-content-center align-items-center">
             <button id="start-btn" onclick="startGame()">Start Game</button>
           </div>
@@ -193,7 +177,7 @@
           <button id="play-btn" onclick="startGame()">Play Again</button>
         </div>
       </div>
-      <div class="text-left">
+      <div class="text-center">
         <button id="section-btn" onclick="location.href='#sectionbuff'"> Relook "How To Play"</button>
       </div>
   </main>
@@ -205,9 +189,9 @@
       <h1 class="gameTitle">~~~~Credits~~~~</h1>
     </div>
 
-    <section class="footer">
+    <section class="footer text-center">
       <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="footer__logo-wrapper"> 
           <img src="assets/images/nus logo.png" alt="">
         </div>
         <p><br />
@@ -222,7 +206,7 @@
       </div>
     </section>
 
-    <section class="footer">
+    <section class="footer text-center">
       <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/nus logo.png" alt="">
@@ -239,7 +223,7 @@
       </div>
     </section>
 
-    <section class="footer">
+    <section class="footer text-center">
       <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/Temasek.png" alt="">
@@ -256,8 +240,8 @@
       </div>
     </section>
 
-    <section class="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-      <div class="container game-container">
+    <section class="footer text-center" >
+      <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/ngee-ann-poly.png" alt="">
         </div>
@@ -273,7 +257,7 @@
       </div>
     </section>
 
-    <section class="footer">
+    <section class="footer text-center">
       <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/SIT_logo.png" alt="">
