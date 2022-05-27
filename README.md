@@ -6,5 +6,5 @@ Hosted on GitHub pages
 ## How to run the project locally
 Open terminal in your project folder and run\
 `git init`\
-`git pull /https://github.com/YeoWeiHan123/HangmanHtml.git`\
+`git pull https://github.com/YeoWeiHan123/HangmanHtml.git`\
 run `index.html`
