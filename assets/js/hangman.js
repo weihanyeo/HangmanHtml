@@ -22,65 +22,48 @@ const wrongLetters = [];
 // Get all elements with a class of figure-part and store to array
 const figureParts = document.querySelectorAll(".figure-part");
 
+// Loading Variable
+let loading = $("#loadingDiv").hide();
+
 /* Function to start the game.
     Picks a random number from the words array and use index to assign selectedWord and selectedHint */
 function startGame() {
-  //Dictionary API
-  while (true) {
-    var xhttp1 = new XMLHttpRequest();
-    xhttp1.open("GET", "https://random-word-api.herokuapp.com/word", false);
-    xhttp1.send();
-    let wordRes = xhttp1.responseText;
-    let wordParsedRes = JSON.parse(wordRes);
+  loading.show();
 
-    var xhttp2 = new XMLHttpRequest();
-    xhttp2.open(
-      "GET",
-      "https://api.dictionaryapi.dev/api/v2/entries/en/" + wordParsedRes[0],
-      false
-    );
-    xhttp2.send();
-    let defRes = xhttp2.responseText;
-    let defParsedRes = JSON.parse(defRes);
+  //New worker
+  const worker = new Worker("assets/js/worker.js");
+  worker.onmessage = (e) => {
+    res = e.data;
+    word = res.word;
+    hint = res.hint;
 
-    if (defParsedRes.title == "No Definitions Found") {
-      console.log(
-        "No Definitions Found for current word, to look for new word again"
-      );
-    } else {
-      var word = wordParsedRes[0];
-      var hint =
-        defParsedRes[0].meanings[0].definitions[0].definition +
-        " (" +
-        defParsedRes[0].meanings[0].partOfSpeech +
-        ")";
-      break;
-    }
-  }
+    console.log("res:", e.data);
 
-  selectedWord = word.toUpperCase();
-  selectedHint = hint.toUpperCase();
+    selectedWord = word.toUpperCase();
+    selectedHint = hint.toUpperCase();
 
-  // Hide hangman figure on game start
-  $(".figure-part").css("display", "none");
-  $(".face-part").css("display", "none");
+    // Hide hangman figure on game start
+    $(".figure-part").css("display", "none");
+    $(".face-part").css("display", "none");
 
-  // Hide start button on game start
-  $("#start-btn").css("display", "none");
+    // Hide start button on game start
+    $("#start-btn").css("display", "none");
 
-  // Display user input on game start
-  $("#userInput").css("display", "block");
-  $("#key-btns").css("display", "block");
+    // Display user input on game start
+    $("#userInput").css("display", "block");
+    $("#key-btns").css("display", "block");
 
-  // Change alphabet buttons back to white and clickable
-  $(".key-btn").css("background", "#EFEFEF");
-  $(".key-btn").prop("disabled", false);
+    // Change alphabet buttons back to white and clickable
+    $(".key-btn").css("background", "#EFEFEF");
+    $(".key-btn").prop("disabled", false);
 
-  displayWord();
+    displayWord();
+  };
 }
 
 // Function to display the word
 function displayWord() {
+  loading.hide();
   //set game finish to false to allow input for new game
   gameFinish = false;
 
