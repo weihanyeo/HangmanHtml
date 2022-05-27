@@ -256,6 +256,35 @@ a {
   margin: 0; /* Remove margins */
 }
 
+#loadingDiv{
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Overlay over gameSection */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Dark background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin: auto; /* Center item horizontally and vertically */
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /********** Scroll-to-top button ************/
 button#scrollButton {
   position: fixed;
@@ -303,6 +332,7 @@ html {
 
 #gameSection {
   height: 650px;
+  position: relative;
 }
 
 #creditsSection {
