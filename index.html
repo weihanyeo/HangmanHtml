@@ -20,7 +20,7 @@
   <!-- include manlogo at tab :) -->
   <link rel="icon" href="assets/images/manlogo.png" />
 
-  <title>my first game project</title>
+  <title>Hangman</title>
 
 </head>
 <!-- End head -->
@@ -75,6 +75,7 @@
       <div class="game-container grow">
         <h3>How To Play !!</h3>
         <p>
+
           Guess the word by inputting letters to text box.<br />
           Incorrect letter guesses will be shown under 'Wrong Letters' on the
           game board.<br />
@@ -82,6 +83,7 @@
           game.<br />
           <b>Only</b> letters in the English alphabet will accepted. <b>Case insensitive.</b><br />
           For multiplayer, player 1 finishes, player 2 comtinues et cetera.<br />
+
         </p>
       </div>
       <div class="text-center justify-content-center align-items-center">
@@ -97,6 +99,11 @@
     </div>
 
     <div class="container game-container" id="gameSection">
+
+      <div id="loadingDiv">
+        <div class="loader"></div>        
+      </div>
+
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4 text-center" id="score">
           <h3>Player ONE</h3>
@@ -111,6 +118,7 @@
           <svg height="345" width="200" class="figure-container">
             <!-- Rod -->
             <line x1="30" y1="330" x2="230" y2="330" class="figure-part" />
+
             <line x1="30" y1="20" x2="30" y2="330" class="figure-part" />
             <line x1="30" y1="20" x2="240" y2="20" class="figure-part" />
             <line x1="140" y1="20" x2="140" y2="50" class="figure-part" />
@@ -119,16 +127,18 @@
             <circle cx="140" cy="80" r="30" class="figure-part" />
 
             <!-- Start Face -->
-            <circle cx="130" cy="70" r="3" class="start-face" />
-            <circle cx="150" cy="70" r="3" class="start-face" />
-            <circle cx="140" cy="90" r="5" class="start-face" />
+            <circle cx="130" cy="70" r="3" class="start-face face-part" />
+            <circle cx="150" cy="70" r="3" class="start-face face-part" />
+            <circle cx="140" cy="90" r="5" class="start-face face-part" />
 
             <!-- Lose Face -->
-            <line x1="135" y1="80" x2="125" y2="70" class="lose-face" />
-            <line x1="125" y1="80" x2="135" y2="70" class="lose-face" />
+            <line x1="135" y1="80" x2="125" y2="70" class="lose-face face-part" />
+            <line x1="125" y1="80" x2="135" y2="70" class="lose-face face-part" />
 
-            <line x1="155" y1="80" x2="145" y2="70" class="lose-face" />
-            <line x1="145" y1="80" x2="155" y2="70" class="lose-face" />
+            <line x1="155" y1="80" x2="145" y2="70" class="lose-face face-part" />
+            <line x1="145" y1="80" x2="155" y2="70" class="lose-face face-part" />
+
+            <circle cx="140" cy="90" r="5" class="lose-face face-part" />
 
             <!-- Body -->
             <line x1="140" y1="110" x2="140" y2="200" class="figure-part" />
@@ -161,6 +171,42 @@
             <button onclick="validateForm()" id="submit-btn">Submit</button>
           </form>
 
+          <!-- Alphabet Button for Guessing | On-screen Keyboard-->
+          <div id="key-btns">
+          <div class="col-12 d-flex justify-content-center">
+            <button name="guess" class="guess key-btn" onclick="validateLetter('Q')">Q</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('W')">W</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('E')">E</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('R')">R</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('T')">T</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('Y')">Y</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('U')">U</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('I')">I</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('O')">O</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('P')">P</button>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button name="guess" class="guess key-btn" onclick="validateLetter('A')">A</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('S')">S</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('D')">D</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('F')">F</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('G')">G</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('H')">H</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('J')">J</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('K')">K</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('L')">L</button>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button name="guess" class="guess key-btn" onclick="validateLetter('Z')">Z</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('X')">X</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('C')">C</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('V')">V</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('B')">B</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('N')">N</button>
+            <button name="guess" class="guess key-btn" onclick="validateLetter('M')">M</button>
+          </div>
+          </div>
+
           <!-- Error message when using duplicate letters -->
           <p id="letter-error">This letter has been entered! Try others!</p>
 
@@ -190,8 +236,8 @@
     </div>
 
     <section class="footer text-center">
-      <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-        <div class="footer__logo-wrapper"> 
+      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+        <div class="footer__logo-wrapper">
           <img src="assets/images/nus logo.png" alt="">
         </div>
         <p><br />
@@ -207,7 +253,7 @@
     </section>
 
     <section class="footer text-center">
-      <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/nus logo.png" alt="">
         </div>
@@ -224,7 +270,7 @@
     </section>
 
     <section class="footer text-center">
-      <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/Temasek.png" alt="">
         </div>
@@ -240,15 +286,16 @@
       </div>
     </section>
 
-    <section class="footer text-center" >
-      <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+    <section class="footer text-center">
+      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/ngee-ann-poly.png" alt="">
         </div>
         <p class="instructions">
           <br />
-          Ong Shi Ya alumnus Immersive Media & Game
+          Ong Shi Ya alumnus Immersive Media & Game Design
         </p>
+        
         <ul class="footer__social-list">
           <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
           <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -258,7 +305,7 @@
     </section>
 
     <section class="footer text-center">
-      <div class="container game-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
           <img src="assets/images/SIT_logo.png" alt="">
         </div>
