@@ -265,7 +265,6 @@ function validateLetter(input) {
     let thisLetter = ".guess" + letter;
     // Alphabet button to turn grey after being click once during gameplay
     $(`${thisLetter}`).css("background", "grey");
-    $(`${thisLetter}`).attr("disabled", "disabled");
 
     // Regex to verify variable is a letter
     if (/[a-zA-Z]/.test(letter)) {
