@@ -25,6 +25,7 @@ while (flag) {
       "No Definitions Found for current word, to look for new word again"
     );
   } else {
+    flag = false;
     let res = {
       word: wordParsedRes[0],
       hint:
@@ -33,7 +34,6 @@ while (flag) {
         defParsedRes[0].meanings[0].partOfSpeech +
         ")",
     };
-    flag = false;
     this.postMessage(res);
   }
 }
