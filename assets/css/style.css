@@ -10,7 +10,7 @@
 
 body {
   font-family: "Roboto", "Playfair Display", sans-serif;
-  background: #4b0d7e;
+  background: #000;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -35,6 +35,65 @@ a {
   font-size: 1.8rem;
 }
 
+/* MEDIA QUERIES for Screens larger than 1024px*/
+@media screen and (min-width: 1024px) {
+  #gameSection {
+    padding: 3em 3em;
+  }
+  div .hangman {
+    height: calc(50vh + 1vmin);
+  }
+}
+
+/* MEDIA QUERIES for Tablet Horizontal Screens*/
+@media only screen and (max-width: 1024px) {
+  .key-btn {
+    font-size: calc(0.50em + 1vmin) !important;
+  }
+  #gameSection {
+    padding: 5em 5em;
+  }
+  div .hangman {
+    height: calc(40vh + 1vmin);
+  }
+}
+
+/* MEDIA QUERIES for Tablet Screens*/
+@media only screen and (max-width: 900px) {
+  #userInput,
+  #guess {
+    display: none !important;
+  }
+  .key-btn {
+    font-size: calc(0.45em + 1vmin) !important;
+  }
+  .word {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  div .hangman {
+    height: calc(30vh + 1vmin);
+  }
+}
+
+/* MEDIA QUERIES for Mobile Screens*/
+@media only screen and (max-width: 740px) {
+  #userInput,
+  #guess {
+    display: none !important;
+  }
+  .key-btn {
+    font-size: calc(1em + 1vmin) !important;
+  }
+  .word, #hint p {
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+  }
+  div .hangman {
+    height: calc(18vh + 1vmin);
+  }
+}
+
 /* Game */
 .invis-container {
   padding: 20px 30px;
@@ -51,10 +110,11 @@ a {
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;
+  min-height: 85vh;
   overflow: hidden;
   border: 3px solid #ffffff;
   border-radius: 10px;
-  background-color: #141313;
+  background-color: #141313be;
 }
 
 .figure-container {
@@ -86,7 +146,7 @@ a {
 
 #wrong-letters p {
   margin-top: 2rem;
-  font-size: 3.5rem;
+  font-size: calc(0.75em + 1vmin);
   font-weight: 600;
 }
 
@@ -112,7 +172,7 @@ a {
 
 #final-message {
   margin-top: 0.5rem;
-  font-size: 2rem;
+  font-size: calc(0.75em + 1vmin);
 }
 
 #letter-error {
@@ -163,7 +223,7 @@ a {
 }
 
 #score span {
-  font-size: 2rem;
+  font-size: calc(0.75em + 1vmin);
 }
 
 #score .lose {
@@ -384,41 +444,6 @@ html {
   color: #232222;
 }
 
-/* MODALS */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 5;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4);
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  color: #0000;
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.credits-content {
+  display: flex;
 }
