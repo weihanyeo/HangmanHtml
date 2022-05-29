@@ -156,9 +156,6 @@ function newRound() {
   correctLetters.splice(0);
   wrongLetters.splice(0);
 
-  // Start a new game
-  startGame();
-
   // Hide wrong letters and figures
   updateWrongLettersEl();
 
