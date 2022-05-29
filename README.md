@@ -8,5 +8,5 @@ Note: You will need a stable Internet connection to successfully play this game 
 ## How to run the project locally
 Open terminal in your project folder and run\
 `git init`\
-`git pull https://github.com/YeoWeiHan123/HangmanHtml.git`\
+`git clone https://github.com/YeoWeiHan123/HangmanHtml.git`\
 run `index.html`
