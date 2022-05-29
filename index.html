@@ -14,8 +14,6 @@
   <link rel="stylesheet" type="text/css" href="assets/css/footer.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/header.css" />
   
-  
-  
   <!-- AOS Animate Library -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   
@@ -57,7 +55,28 @@
   <div class="container invis-container"></div>
   <!-- Hangman Game Container -->
   <div class="container game-container" id="gameSection">
-    <div id="loadingDiv"><div class="loader"></div></div>
+    
+    <div id="loadingDiv">
+      <div class="loader">
+        <img src="assets/images/loadingw.gif">
+        <div class="bouncing-text">
+          <span class="l">l</span>
+          <span class="o">o</span>
+          <span class="a">a</span>
+          <span class="d">d</span>
+          <span class="i">i</span>
+          <span class="n">n</span>
+          <span class="g">g</span>
+        </div>
+      </div>           
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <button class="generalButton" onclick="restartGame()">Restart Game and reset scores</button>
+      </div>
+    </div>
+    
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-4 text-center" id="score">
         <h3>Player ONE</h3>
@@ -66,110 +85,67 @@
           <span class="lose">0</span>
         </p>
       </div>
-      <div class="text-center justify-content-center align-items-center">
-        <button class="generalButton" onclick="location.href='#sectionbuff2'"> Let's Play!</button>
+      
+      <!-- Start Hangman game  col-12 col-md-6 col-lg-4 -->
+      <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+        <svg height="345" width="200" class="figure-container">
+          <!-- Rod -->
+          <line x1="30" y1="330" x2="230" y2="330" class="figure-part" />
+          
+          <line x1="30" y1="20" x2="30" y2="330" class="figure-part" />
+          <line x1="30" y1="20" x2="240" y2="20" class="figure-part" />
+          <line x1="140" y1="20" x2="140" y2="50" class="figure-part" />
+          
+          <!-- Head -->
+          <circle cx="140" cy="80" r="30" class="figure-part" />
+          
+          <!-- Start Face -->
+          <circle cx="130" cy="70" r="3" class="start-face face-part" />
+          <circle cx="150" cy="70" r="3" class="start-face face-part" />
+          <circle cx="140" cy="90" r="5" class="start-face face-part" />
+          
+          <!-- Lose Face -->
+          <line x1="135" y1="80" x2="125" y2="70" class="lose-face face-part" />
+          <line x1="125" y1="80" x2="135" y2="70" class="lose-face face-part" />
+          
+          <line x1="155" y1="80" x2="145" y2="70" class="lose-face face-part" />
+          <line x1="145" y1="80" x2="155" y2="70" class="lose-face face-part" />
+          
+          <circle cx="140" cy="90" r="5" class="lose-face face-part" />
+          
+          <!-- Body -->
+          <line x1="140" y1="110" x2="140" y2="200" class="figure-part" />
+          
+          <!-- Arms -->
+          <line x1="140" y1="140" x2="100" y2="110" class="figure-part" />
+          <line x1="140" y1="140" x2="180" y2="110" class="figure-part" />
+          
+          <!-- Legs -->
+          <line x1="140" y1="200" x2="110" y2="250" class="figure-part" />
+          <line x1="140" y1="200" x2="170" y2="250" class="figure-part" />
+          <span class="sr-only">Overall Hangman Image</span>
+        </svg>
       </div>
-    <div class="container" id = "buff">
-    </div>
-      <div class="text-center justify-content-center align-items-center">
-        <button class="generalButton" onclick="location.href='#creditSection'">The web designers</button>
-      </div>
-    </div>
-    <div class="container" id = "sectionbuff2">
-    </div>
-
-    <div class="container game-container" id="gameSection">
-
-      <div id="loadingDiv">
-        <div class="loader">
-          <img src="assets/images/loadingw.gif">
-          <div class="bouncing-text">
-            <span class="l">l</span>
-            <span class="o">o</span>
-            <span class="a">a</span>
-            <span class="d">d</span>
-            <span class="i">i</span>
-            <span class="n">n</span>
-            <span class="g">g</span>
-          </div>
-        </div>           
-      </div>
-
-      <div class="row">
-        <div class="col-sm-4">
-          <button class="generalButton" onclick="restartGame()">Restart Game and reset scores</button>
+      
+      <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+        <div class="text-center justify-content-center align-items-center">
+          <button id="start-btn" onclick="startGame()">Start Game</button>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 text-center" id="score">
-          <h3>Player ONE</h3>
-          <p>
-            GAME SCORE: Win: <span class="win">0</span> Lose:
-            <span class="lose">0</span>
-          </p>
-        </div>
-
-        <!-- Start Hangman game  col-12 col-md-6 col-lg-4 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-          <svg height="345" width="200" class="figure-container">
-            <!-- Rod -->
-            <line x1="30" y1="330" x2="230" y2="330" class="figure-part" />
-
-            <line x1="30" y1="20" x2="30" y2="330" class="figure-part" />
-            <line x1="30" y1="20" x2="240" y2="20" class="figure-part" />
-            <line x1="140" y1="20" x2="140" y2="50" class="figure-part" />
-
-            <!-- Head -->
-            <circle cx="140" cy="80" r="30" class="figure-part" />
-
-            <!-- Start Face -->
-            <circle cx="130" cy="70" r="3" class="start-face face-part" />
-            <circle cx="150" cy="70" r="3" class="start-face face-part" />
-            <circle cx="140" cy="90" r="5" class="start-face face-part" />
-
-            <!-- Lose Face -->
-            <line x1="135" y1="80" x2="125" y2="70" class="lose-face face-part" />
-            <line x1="125" y1="80" x2="135" y2="70" class="lose-face face-part" />
-
-            <line x1="155" y1="80" x2="145" y2="70" class="lose-face face-part" />
-            <line x1="145" y1="80" x2="155" y2="70" class="lose-face face-part" />
-
-            <circle cx="140" cy="90" r="5" class="lose-face face-part" />
-
-            <!-- Body -->
-            <line x1="140" y1="110" x2="140" y2="200" class="figure-part" />
-
-            <!-- Arms -->
-            <line x1="140" y1="140" x2="100" y2="110" class="figure-part" />
-            <line x1="140" y1="140" x2="180" y2="110" class="figure-part" />
-
-            <!-- Legs -->
-            <line x1="140" y1="200" x2="110" y2="250" class="figure-part" />
-            <line x1="140" y1="200" x2="170" y2="250" class="figure-part" />
-            <span class="sr-only">Overall Hangman Image</span>
-          </svg>
-        </div>
-
-        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-          <div class="text-center justify-content-center align-items-center">
-            <button class="generalButton" onclick="startGame()">Start Game</button>
-          </div>
-          <!-- Word and text input for guesses -->
-          <div class="word" id="word"></div>
-
-          <!-- Hint -->
-          <div id="hint"></div>
-
-          <!-- Calls validateForm() method to send user input to variable -->
-          <form name="userInput" id="userInput" onsubmit="return false">
-            <input type="text" maxlength="1" name="guess" id="guess" placeholder="Enter guess here"
-              aria-label="Enter guess here" />
-            <button onclick="validateForm()" id="submit-btn">Submit</button>
-          </form>
-
-          <!-- Alphabet Button for Guessing | On-screen Keyboard-->
-          <div id="key-btns">
+        <!-- Word and text input for guesses -->
+        <div class="word" id="word"></div>
+        
+        <!-- Hint -->
+        <div id="hint"></div>
+        
+        <!-- Calls validateForm() method to send user input to variable -->
+        <form name="userInput" id="userInput" onsubmit="return false">
+          <input type="text" maxlength="1" name="guess" id="guess" placeholder="Enter guess here"
+          aria-label="Enter guess here" />
+          <button onclick="validateForm()" id="submit-btn">Submit</button>
+        </form>
+        
+        <!-- Alphabet Button for Guessing | On-screen Keyboard-->
+        <div id="key-btns">
           <div class="col-12 d-flex justify-content-center">
             <button name="guess" class="guess key-btn" onclick="validateLetter('Q')">Q</button>
             <button name="guess" class="guess key-btn" onclick="validateLetter('W')">W</button>
@@ -210,21 +186,15 @@
         <!-- Display incorrect letter guesses -->
         <div id="wrong-letters"></div>
       </div>
-      <!-- Container for final messages -->
-      <div class="final-msg-container" id="final-msg-container">
-        <div class="col-12 d-flex justify-content-center">
-          <h4 id="final-message">Final Result</h4>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <button class="generalButton" onclick="newRound()">Play Again</button>
-        </div>
-      </div>
-      <div class="text-center">
-        <button class="generalButton" onclick="location.href='#sectionbuff'"> Relook "How To Play"</button>
-      </div>
     </div>
-    <div class="text-center">
-      <button id="section-btn" onclick="location.href='#sectionbuff'"> Relook "How To Play"</button>
+    <!-- Container for final messages -->
+    <div class="final-msg-container" id="final-msg-container">
+      <div class="col-12 d-flex justify-content-center">
+        <h4 id="final-message">Final Result</h4>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <button class="generalButton" onclick="newRound()">Play Again</button>
+      </div>
     </div>
   </main>
   <!-- End Hangman game -->
