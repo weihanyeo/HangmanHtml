@@ -246,20 +246,71 @@ a {
 }
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-  margin: auto; /* Center item horizontally and vertically */
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.loader img{
+  width: 120px;
+  height: 120px;
+}
+
+.loader span{
+  display: inline-block;
+  font-size: 2.3em;
+  color: white;
+}
+
+.l {
+  animation: bounce 1s ease infinite;
+  -webkit-animation: bounce 1s ease infinite;
+}
+.o {
+  animation: bounce 1s ease infinite .2s;
+  -webkit-animation: bounce 1s ease infinite .2s;
+}
+.a {
+  animation: bounce 1s ease infinite .3s;
+  -webkit-animation: bounce 1s ease infinite .3s;
+}
+.d {
+  animation: bounce 1s ease infinite .4s;
+  -webkit-animation: bounce 1s ease infinite .4s;
+}
+.i {
+  animation: bounce 1s ease infinite .5s;
+  -webkit-animation: bounce 1s ease infinite .5s;
+}
+.n {
+  animation: bounce 1s ease infinite .6s;
+  -webkit-animation: bounce 1s ease infinite .6s;
+}
+.g {
+  animation: bounce 1s ease infinite .7s;
+  -webkit-animation: bounce 1s ease infinite .7s;
+}
+
+@keyframes bounce {
+        0%   { transform: scale(1,1) translateY(0); }
+        10%  { transform: scale(1.1,.9) translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-5px);}
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        58%  { transform: scale(1,1) translateY(0); }
+        65%  { transform: scale(1,1) translateY(0);}
+        100% { transform: scale(1,1) translateY(0);}
+    }
+
+@-webkit-keyframes bounce {
+       0%   { transform: scale(1,1) translateY(0); }
+        10%  { transform: scale(1.1,.9) translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-5px);}
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        58%  { transform: scale(1,1) translateY(-7px);}
+        65%  { transform: scale(1,1) translateY(0);}
+        100% { transform: scale(1,1) translateY(0);} 
 }
 
 /********** Scroll-to-top button ************/
