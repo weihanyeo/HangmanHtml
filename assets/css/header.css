@@ -1,4 +1,6 @@
 #header_ribbon {
+    display: flex;
+    justify-content: space-between;
     overflow: hidden;
     background-color: grey;
     padding: 2px 1px;
@@ -6,7 +8,7 @@
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 3;
+    z-index: 3
 }
 
 #header_ribbon a {
@@ -18,19 +20,68 @@
     font-size: 18px;
     line-height: 1px;
     border-radius: 2px;
+    size:1em
+}
+
+#header_ribbon i {
+    /* this sizes the icons */
+    font-size: 1.5em;
+}
+
+#header_ribbon button {
+    background: none;
+	border: none;
+	cursor: pointer;
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1px;
+    border-radius: 2px;
+    size:1em
+}
+
+.aClass {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1px;
+    border-radius: 2px;
 }
 
 #header_ribbon #Title {
-    font-size: 35px;
+    font-size: 3rem;
     font-weight: bold;
-    transition: 0.8s;
-}
-
-#header_ribbon a:hover {
-    color: #01FE06;
+    float: left;
+    display: flex;
+    align-items: center;
+    animation: glow 2s ease-in-out infinite alternate;
+    justify-content: center;
+    color: #FFFFFF;
 }
 
 #header_ribbon_right {
     float: right;
 }
 
+
+.sub-heading {
+    font-size: 1.75rem;
+    width: 30ch;
+    white-space: nowrap;
+    overflow: hidden;
+}
+  
+@keyframes glow {
+    from {
+        text-shadow: 0 0 24px #ffffff;
+    }
+    to {
+        text-shadow: 0 0 30px #ffffff, 0 0 10px #ffffff;
+    }
+}
