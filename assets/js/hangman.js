@@ -3,13 +3,20 @@ const wordEl = document.getElementById("word");
 const hintEl = document.getElementById("hint");
 const wrongLettersEl = document.getElementById("wrong-letters");
 const playAgainBtn = document.getElementById("play-btn");
+const startBtn = document.getElementById("start-btn");
 
 // Variable to determine if game has ended or not, to be used to control keydown events
 let gameFinish = true;
 
 // Variables for keeping score (Checkin if its zero or not, if it's not, the value will set to the state management's values)
-let win = parseInt(sessionStorage.getItem("win"))>0 ? parseInt(sessionStorage.getItem("win")) : 0 ;
-let lose = parseInt(sessionStorage.getItem("lose"))>0 ? parseInt(sessionStorage.getItem("lose")) : 0;
+let win =
+  parseInt(sessionStorage.getItem("win")) > 0
+    ? parseInt(sessionStorage.getItem("win"))
+    : 0;
+let lose =
+  parseInt(sessionStorage.getItem("lose")) > 0
+    ? parseInt(sessionStorage.getItem("lose"))
+    : 0;
 
 // Variable for Selected word and hint
 let selectedHint;
@@ -25,7 +32,6 @@ var figureParts = document.querySelectorAll(".figure-part");
 // Loading Variable
 let loading = $("#loadingDiv").hide();
 
-
 // To get the win/lose stats when the page loads (if any)
 function getStats() {
   $(".win").html(win);
@@ -38,8 +44,7 @@ function startGame() {
   // To show while app is retrieving the word data
   loading.show();
 
-  $(".win").html(win);
-  $(".lose").html(lose);
+  getStats();
 
   // enable the input
   $("#submit-btn").removeAttr("disabled");
@@ -48,6 +53,9 @@ function startGame() {
   const worker = new Worker("assets/js/worker.js");
   worker.onmessage = (e) => {
     res = e.data;
+
+    worker.terminate();
+
     word = res.word;
     hint = res.hint;
 
@@ -77,7 +85,14 @@ function startGame() {
 
 // Function to display the word
 function displayWord() {
+  // hide loading overlay once word is ready
   loading.hide();
+
+  // Alphabet button to turn grey after being click once during gameplay
+  $(".key-btn").click(function () {
+    $(this).css("background", "grey");
+  });
+
   //set game finish to false to allow input for new game
   gameFinish = false;
 
@@ -87,15 +102,15 @@ function displayWord() {
   // Display word
   $("#word").html(`
         ${selectedWord
-      .split("")
-      .map(
-        (letter) => `
+          .split("")
+          .map(
+            (letter) => `
                 <span class="letter">
                     ${correctLetters.includes(letter) ? letter : ""}
                 </span>
             `
-      )
-      .join("")}
+          )
+          .join("")}
         `);
 
   const innerWord = wordEl.innerText.replace(/\n/g, "");
@@ -109,6 +124,7 @@ function displayWord() {
 
     // Alphabet buttons will be unclickable once game is finished
     $(".key-btn").prop("disabled", true);
+    $(".key-btn").css("background", "grey");
 
     // Display final win status
     $("#final-message").html("Good Job!! You Won!!!");
@@ -126,23 +142,34 @@ function restartGame() {
   // Clearing states
   $(".win").html(0);
   $(".lose").html(0);
-  sessionStorage.removeItem("win");
-  sessionStorage.removeItem("lose");
 
-  window.location.reload();
+  win = 0;
+  lose = 0;
+
+  sessionStorage.setItem("win", win);
+  sessionStorage.setItem("lose", win);
 }
 
 // Clear stuff for the next round to start (hints, body parts)
 function newRound() {
-  console.log(`testing`);
-  // Clear wrong letters
-  wrongLetters = [];
-  wrongLettersEl.innerHTML = ``;
+  //Empty the arrays
+  correctLetters.splice(0);
+  wrongLetters.splice(0);
 
-  // Clear body parts (start a fresh criminal to hang)
-  figureParts = [];
+  // Start a new game
+  startGame();
 
-  window.location.reload();
+  // Hide wrong letters and figures
+  updateWrongLettersEl();
+
+  // Hide final message
+  $("#final-msg-container").css("display", "none");
+
+  //Hide faces when starting new game
+  $(".start-face").css("display", "none");
+  $(".lose-face").css("display", "none");
+
+  startGame();
 }
 
 // Update the wrong letters
@@ -176,6 +203,7 @@ function updateWrongLettersEl() {
 
     // Alphabet buttons will be unclickable once game is finished
     $(".key-btn").prop("disabled", true);
+    $(".key-btn").css("background", "grey");
 
     //Switch to lose face by hiding start face and displaying lose face
     $(".start-face").css("display", "none");
@@ -189,20 +217,20 @@ function updateWrongLettersEl() {
     //After they lose, display the selectedWord
     wordEl.innerHTML = `
         ${selectedWord
-        .split("")
-        .map(
-          (selectedWord) => `
+          .split("")
+          .map(
+            (selectedWord) => `
                 <span class="letter">
                     ${selectedWord}
                 </span>
             `
-        )
-        .join("")}
+          )
+          .join("")}
         `;
     // Insert losing score to HTML and SessionStorage
     lose += 1;
     sessionStorage.setItem("lose", lose);
-    $('.lose').html(lose);
+    $(".lose").html(lose);
   }
 }
 
@@ -233,6 +261,12 @@ function validateForm() {
 function validateLetter(input) {
   if (gameFinish === false) {
     const letter = input.toUpperCase();
+
+    let thisLetter = ".guess" + letter;
+    // Alphabet button to turn grey after being click once during gameplay
+    $(`${thisLetter}`).css("background", "grey");
+    $(`${thisLetter}`).attr("disabled", "disabled");
+
     // Regex to verify variable is a letter
     if (/[a-zA-Z]/.test(letter)) {
       /* If letter is in selected word and correctLetters array doesnt already contain letter, 
@@ -261,13 +295,6 @@ function validateLetter(input) {
   }
 }
 
-// Alphabet button to turn grey after being click once during gameplay 
-$(".key-btn").click(function () {
-  $(this).css("background", "grey");
-  $(this).attr("disabled", "disabled");
-});
-
-
 /* Obsolete i think??? Like why add an event listener when we already got a function that will be called on click?? Confusing me,
 Cuz I thought why got listener and a function that will be called when the button is clicked. Then like, a bit hard for others to
 understand as well cuz then we need to read through the whole codebase to see what is being called, instead of just the function call 
@@ -279,7 +306,7 @@ Should instead stick to either just the function, or event listener to be trigge
 Also also, there isn't a need, regardless of the best practices or whatever thing, for you to call "startGame()" function in this listener
 and the actual function itself. Then it's being called twice.
 */
-// Event listener on Play Again button to empty arrays and clear game board before starting a new game 
+// Event listener on Play Again button to empty arrays and clear game board before starting a new game
 // playAgainBtn.addEventListener("click", () => {
 //   //Empty the arrays
 //   correctLetters.splice(0);
