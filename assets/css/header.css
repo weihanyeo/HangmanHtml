@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    background-color: grey;
+    background-color: #fefefe;
     padding: 2px 1px;
     transition: 0.8s;
     position: fixed;
@@ -62,7 +62,7 @@
     align-items: center;
     animation: glow 2s ease-in-out infinite alternate;
     justify-content: center;
-    color: #FFFFFF;
+    color: #000;
 }
 
 #header_ribbon_right {
@@ -79,9 +79,9 @@
   
 @keyframes glow {
     from {
-        text-shadow: 0 0 24px #ffffff;
+        text-shadow: 0 0 24px #000;
     }
     to {
-        text-shadow: 0 0 30px #ffffff, 0 0 10px #ffffff;
+        text-shadow: 0 0 30px #000, 0 0 10px #000;
     }
 }
