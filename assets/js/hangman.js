@@ -132,7 +132,7 @@ function restartGame() {
   window.location.reload();
 }
 
-// Clear stuff for the next round to start (hints, body parts) (not in use for now)
+// Clear stuff for the next round to start (hints, body parts)
 function newRound() {
   console.log(`testing`);
   // Clear wrong letters
