@@ -367,7 +367,8 @@ html {
 }
 
 #gameSection {
-  height: 650px;
+  height: auto;
+  min-height: 50%;
   position: relative;
 }
 
