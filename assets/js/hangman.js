@@ -103,8 +103,20 @@ function displayWord() {
 
     win = win + 1;
     $(".win").html(win);
+    sessionStorage.setItem("win", win);
   }
 }
+
+// Clear the win/loss counters, clear sessionstorage and start a new game
+function restartGame() {
+  // Clearing states
+  $(".win").html(0);
+  $(".lose").html(0);
+  sessionStorage.removeItem("win");
+
+  window.location.reload();
+}
+
 
 // Update the wrong letters
 function updateWrongLettersEl() {
