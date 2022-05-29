@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rokkitt:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
@@ -48,10 +48,10 @@ a {
 /* MEDIA QUERIES for Tablet Horizontal Screens*/
 @media only screen and (max-width: 1024px) {
   .key-btn {
-    font-size: calc(0.50em + 1vmin) !important;
+    font-size: calc(0.5em + 1vmin) !important;
   }
   #gameSection {
-    padding: 5em 5em;
+    padding: 5em 3em;
   }
   div .hangman {
     height: calc(40vh + 1vmin);
@@ -74,6 +74,9 @@ a {
   div .hangman {
     height: calc(30vh + 1vmin);
   }
+  #gameSection {
+    padding: 3em 2em;
+  }
 }
 
 /* MEDIA QUERIES for Mobile Screens*/
@@ -85,12 +88,16 @@ a {
   .key-btn {
     font-size: calc(1em + 1vmin) !important;
   }
-  .word, #hint p {
+  .word,
+  #hint p {
     margin-top: 0.5em !important;
     margin-bottom: 0.5em !important;
   }
   div .hangman {
     height: calc(18vh + 1vmin);
+  }
+  #gameSection {
+    padding: 3em 1em;
   }
 }
 
@@ -301,7 +308,7 @@ a {
   margin: 0; /* Remove margins */
 }
 
-#loadingDiv{
+#loadingDiv {
   width: 100%;
   height: 100%;
   position: absolute; /* Overlay over gameSection */
@@ -309,7 +316,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Dark background with opacity */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background with opacity */
   z-index: 2; /* Stack order */
 }
 
@@ -321,12 +328,12 @@ a {
   justify-content: center;
 }
 
-.loader img{
+.loader img {
   width: 120px;
   height: 120px;
 }
 
-.loader span{
+.loader span {
   display: inline-block;
   font-size: 2.3em;
   color: white;
@@ -337,48 +344,76 @@ a {
   -webkit-animation: bounce 1s ease infinite;
 }
 .o {
-  animation: bounce 1s ease infinite .2s;
-  -webkit-animation: bounce 1s ease infinite .2s;
+  animation: bounce 1s ease infinite 0.2s;
+  -webkit-animation: bounce 1s ease infinite 0.2s;
 }
 .a {
-  animation: bounce 1s ease infinite .3s;
-  -webkit-animation: bounce 1s ease infinite .3s;
+  animation: bounce 1s ease infinite 0.3s;
+  -webkit-animation: bounce 1s ease infinite 0.3s;
 }
 .d {
-  animation: bounce 1s ease infinite .4s;
-  -webkit-animation: bounce 1s ease infinite .4s;
+  animation: bounce 1s ease infinite 0.4s;
+  -webkit-animation: bounce 1s ease infinite 0.4s;
 }
 .i {
-  animation: bounce 1s ease infinite .5s;
-  -webkit-animation: bounce 1s ease infinite .5s;
+  animation: bounce 1s ease infinite 0.5s;
+  -webkit-animation: bounce 1s ease infinite 0.5s;
 }
 .n {
-  animation: bounce 1s ease infinite .6s;
-  -webkit-animation: bounce 1s ease infinite .6s;
+  animation: bounce 1s ease infinite 0.6s;
+  -webkit-animation: bounce 1s ease infinite 0.6s;
 }
 .g {
-  animation: bounce 1s ease infinite .7s;
-  -webkit-animation: bounce 1s ease infinite .7s;
+  animation: bounce 1s ease infinite 0.7s;
+  -webkit-animation: bounce 1s ease infinite 0.7s;
 }
 
 @keyframes bounce {
-        0%   { transform: scale(1,1) translateY(0); }
-        10%  { transform: scale(1.1,.9) translateY(0); }
-        30%  { transform: scale(.9,1.1)   translateY(-5px);}
-        50%  { transform: scale(1.05,.95) translateY(0); }
-        58%  { transform: scale(1,1) translateY(0); }
-        65%  { transform: scale(1,1) translateY(0);}
-        100% { transform: scale(1,1) translateY(0);}
-    }
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-5px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  58% {
+    transform: scale(1, 1) translateY(0);
+  }
+  65% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
 
 @-webkit-keyframes bounce {
-       0%   { transform: scale(1,1) translateY(0); }
-        10%  { transform: scale(1.1,.9) translateY(0); }
-        30%  { transform: scale(.9,1.1)   translateY(-5px);}
-        50%  { transform: scale(1.05,.95) translateY(0); }
-        58%  { transform: scale(1,1) translateY(-7px);}
-        65%  { transform: scale(1,1) translateY(0);}
-        100% { transform: scale(1,1) translateY(0);} 
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-5px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  58% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  65% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
 }
 
 /********** Scroll-to-top button ************/
