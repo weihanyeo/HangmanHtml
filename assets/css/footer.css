@@ -61,7 +61,7 @@ a:active {
 
 #footer_ribbon {
   overflow: hidden;
-  background-color: grey;
+  background-color: #fefefe;
   padding: 2px 1px;
   transition: 0.8s;
   position: float;
@@ -85,4 +85,10 @@ a:active {
   font-size: 35px;
   font-weight: bold;
   transition: 0.8s;
+}
+
+.footer_text {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
 }
