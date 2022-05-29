@@ -36,7 +36,7 @@ a {
   font-size: 1.8rem;
 }
 
-/* Game */
+/** Game **/
 
 .game-container {
   padding: 20px 30px;
@@ -119,7 +119,8 @@ a {
   font-size: 1.5rem;
 }
 
-#play-btn {
+/* General button stylings (Play, Restart, Section) */
+.generalButton {
   background-color: #ffffff;
   border-radius: 5px;
   margin-left: 5px;
@@ -127,31 +128,7 @@ a {
   font-size: 2rem;
 }
 
-#play-btn:hover {
-  background-color: #96cdfc;
-}
-
-#start-btn {
-  background-color: #ffffff;
-  border-radius: 5px;
-  margin-left: 5px;
-  font-weight: bolder;
-  font-size: 2rem;
-}
-
-#start-btn:hover {
-  background-color: #96cdfc;
-}
-
-#section-btn {
-  background-color: #ffffff;
-  border-radius: 5px;
-  margin-left: 5px;
-  font-weight: bolder;
-  font-size: 2rem;
-}
-
-#section-btn:hover {
+.generalButton:hover {
   background-color: #96cdfc;
 }
 
@@ -193,7 +170,7 @@ a {
   font-size: 2rem;
 }
 
-/* Header */
+/** Header **/
 
 .gameTitle {
   font-size: 8rem;

@@ -87,12 +87,12 @@
         </p>
       </div>
       <div class="text-center justify-content-center align-items-center">
-        <button id="section-btn" onclick="location.href='#sectionbuff2'"> Let's Play!</button>
+        <button class="generalButton" onclick="location.href='#sectionbuff2'"> Let's Play!</button>
       </div>
     <div class="container" id = "buff">
     </div>
       <div class="text-center justify-content-center align-items-center">
-        <button id="section-btn" onclick="location.href='#creditSection'">The web designers</button>
+        <button class="generalButton" onclick="location.href='#creditSection'">The web designers</button>
       </div>
     </div>
     <div class="container" id = "sectionbuff2">
@@ -106,7 +106,7 @@
 
       <div class="row">
         <div class="col-sm-4">
-          <button class="generalButton">Restart Game</button>
+          <button class="generalButton" onclick="restartGame()">Restart Game and reset scores</button>
         </div>
       </div>
 
@@ -162,7 +162,7 @@
 
         <div class="col-sm-12 col-md-6 col-lg-4 text-center">
           <div class="text-center justify-content-center align-items-center">
-            <button id="start-btn" onclick="startGame()">Start Game</button>
+            <button class="generalButton" onclick="startGame()">Start Game</button>
           </div>
           <!-- Word and text input for guesses -->
           <div class="word" id="word"></div>
@@ -226,11 +226,11 @@
           <h4 id="final-message">Final Result</h4>
         </div>
         <div class="col-12 d-flex justify-content-center">
-          <button id="play-btn" onclick="startGame()">Play Again</button>
+          <button class="generalButton" onclick="startGame()">Play Again</button>
         </div>
       </div>
       <div class="text-center">
-        <button id="section-btn" onclick="location.href='#sectionbuff'"> Relook "How To Play"</button>
+        <button class="generalButton" onclick="location.href='#sectionbuff'"> Relook "How To Play"</button>
       </div>
   </main>
   <!-- End Hangman game -->
