@@ -2,177 +2,131 @@
 <!-- Start head -->
 
 <head>
-
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
-
+  
   <!-- Link to external style sheet -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/footer.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/header.css" />
-
+  
+  
+  
   <!-- AOS Animate Library -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+  
   <!-- include manlogo at tab :) -->
   <link rel="icon" href="assets/images/manlogo.png" />
-
+  
+  <script src="https://kit.fontawesome.com/81ab8f2cb5.js" crossorigin="anonymous"></script>
+  
   <title>Hangman</title>
-
+  
 </head>
 <!-- End head -->
 
 <body>
   <header>
     <div id="header_ribbon">
-      <h1 id="Title">
-        The Hangman Game
-      </h1>
-
-      <div id="header_ribbon_right">
-        <a href="#sectionbuff">How to play?</a>
-        <a href="#sectionbuff2">The Game</a>
-        <a href="#creditSection">Credits</a>
+      <div id="header_ribbon_left">
+        <button id="tutorial_button" onclick="showTutorial()"><i class="fa-solid fa-circle-question" alt="how to play"></i></button>
+        <button id="credits_button" onclick="showCredits()"><i class="fa-brands fa-dev" alt="credits"></i></button>
       </div>
+      
+      <div id="Title">Hangman</div>
+      
+      <div id="header_ribbon_right">
+        <!-- this is the share area -->
+        <!-- <div class="aClass"><i class="fa-solid fa-share-nodes"></i></div> -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://yeoweihan123.github.io/HangmanHtml/" target="_blank">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="http://www.twitter.com/intent/tweet?text=Hangman%20Game%20https://yeoweihan123.github.io/HangmanHtml/" target="_blank">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <div class="container" id = "sectionbuff">
-    </div>
-    <div class="container game-container" id="section1" >
-      <h1 class="gameTitle">Hangman</h1>
-
-      <section class="Social_Media">
-        <ul class="footer__social-list">
-          <li>
-            <p><a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
-                <i class="fab fa-facebook-f"></i></a>
-              Share on facebook</p>
-
-          <li>
-            <p><a href="http://www.twitter.com/share" target="_blank">
-                <i class="fab fa-twitter"></i></a>
-              Share on Twitter</p>
-          </li>
-
-          <li>
-            <p><a href="https://wa.me/whatsappphonenumber/?text=urlencodedtext" data-action="share/whatsapp/share"
-                target="_blank">
-                <i class="fab fa-whatsapp"></i></a>
-              Share on WhatsApp</p>
-          </li>
-        </ul>
-      </section>
-
-      <h2 class="sub-heading">Are you up for the challenge?</h2>
-      <h2>This dictionary contains A-Z of the most uncommon used english words</h2>
-
-      <!-- Hangman game instructions -->
-      <div class="game-container grow">
-        <h3>How To Play !!</h3>
+<main>
+  <div class="container invis-container"></div>
+  <!-- Hangman Game Container -->
+  <div class="container game-container" id="gameSection">
+    <div id="loadingDiv"><div class="loader"></div></div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4 text-center" id="score">
+        <h3>Player ONE</h3>
         <p>
-
-          Guess the word by inputting letters to text box.<br />
-          Incorrect letter guesses will be shown under 'Wrong Letters' on the
-          game board.<br />
-          If you guess an incorrect letter <b>10 times</b>, you will lose the
-          game.<br />
-          <b>Only</b> letters in the English alphabet will accepted. <b>Case insensitive.</b><br />
-          For multiplayer, player 1 finishes, player 2 comtinues et cetera.<br />
-
+          GAME SCORE: Win: <span class="win">0</span> Lose:
+          <span class="lose">0</span>
         </p>
       </div>
-      <div class="text-center justify-content-center align-items-center">
-        <button id="section-btn" onclick="location.href='#sectionbuff2'"> Let's Play!</button>
+      
+      <!-- Start Hangman game  col-12 col-md-6 col-lg-4 -->
+      <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+        <svg height="345" width="200" class="figure-container">
+          <!-- Rod -->
+          <line x1="30" y1="330" x2="230" y2="330" class="figure-part" />
+          
+          <line x1="30" y1="20" x2="30" y2="330" class="figure-part" />
+          <line x1="30" y1="20" x2="240" y2="20" class="figure-part" />
+          <line x1="140" y1="20" x2="140" y2="50" class="figure-part" />
+          
+          <!-- Head -->
+          <circle cx="140" cy="80" r="30" class="figure-part" />
+          
+          <!-- Start Face -->
+          <circle cx="130" cy="70" r="3" class="start-face face-part" />
+          <circle cx="150" cy="70" r="3" class="start-face face-part" />
+          <circle cx="140" cy="90" r="5" class="start-face face-part" />
+          
+          <!-- Lose Face -->
+          <line x1="135" y1="80" x2="125" y2="70" class="lose-face face-part" />
+          <line x1="125" y1="80" x2="135" y2="70" class="lose-face face-part" />
+          
+          <line x1="155" y1="80" x2="145" y2="70" class="lose-face face-part" />
+          <line x1="145" y1="80" x2="155" y2="70" class="lose-face face-part" />
+          
+          <circle cx="140" cy="90" r="5" class="lose-face face-part" />
+          
+          <!-- Body -->
+          <line x1="140" y1="110" x2="140" y2="200" class="figure-part" />
+          
+          <!-- Arms -->
+          <line x1="140" y1="140" x2="100" y2="110" class="figure-part" />
+          <line x1="140" y1="140" x2="180" y2="110" class="figure-part" />
+          
+          <!-- Legs -->
+          <line x1="140" y1="200" x2="110" y2="250" class="figure-part" />
+          <line x1="140" y1="200" x2="170" y2="250" class="figure-part" />
+          <span class="sr-only">Overall Hangman Image</span>
+        </svg>
       </div>
-    <div class="container" id = "buff">
-    </div>
-      <div class="text-center justify-content-center align-items-center">
-        <button id="section-btn" onclick="location.href='#creditSection'">The web designers</button>
-      </div>
-    </div>
-    <div class="container" id = "sectionbuff2">
-    </div>
-
-    <div class="container game-container" id="gameSection">
-
-      <div id="loadingDiv">
-        <div class="loader"></div>        
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 text-center" id="score">
-          <h3>Player ONE</h3>
-          <p>
-            GAME SCORE: Win: <span class="win">0</span> Lose:
-            <span class="lose">0</span>
-          </p>
+      
+      <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+        <div class="text-center justify-content-center align-items-center">
+          <button id="start-btn" onclick="startGame()">Start Game</button>
         </div>
-
-        <!-- Start Hangman game  col-12 col-md-6 col-lg-4 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-          <svg height="345" width="200" class="figure-container">
-            <!-- Rod -->
-            <line x1="30" y1="330" x2="230" y2="330" class="figure-part" />
-
-            <line x1="30" y1="20" x2="30" y2="330" class="figure-part" />
-            <line x1="30" y1="20" x2="240" y2="20" class="figure-part" />
-            <line x1="140" y1="20" x2="140" y2="50" class="figure-part" />
-
-            <!-- Head -->
-            <circle cx="140" cy="80" r="30" class="figure-part" />
-
-            <!-- Start Face -->
-            <circle cx="130" cy="70" r="3" class="start-face face-part" />
-            <circle cx="150" cy="70" r="3" class="start-face face-part" />
-            <circle cx="140" cy="90" r="5" class="start-face face-part" />
-
-            <!-- Lose Face -->
-            <line x1="135" y1="80" x2="125" y2="70" class="lose-face face-part" />
-            <line x1="125" y1="80" x2="135" y2="70" class="lose-face face-part" />
-
-            <line x1="155" y1="80" x2="145" y2="70" class="lose-face face-part" />
-            <line x1="145" y1="80" x2="155" y2="70" class="lose-face face-part" />
-
-            <circle cx="140" cy="90" r="5" class="lose-face face-part" />
-
-            <!-- Body -->
-            <line x1="140" y1="110" x2="140" y2="200" class="figure-part" />
-
-            <!-- Arms -->
-            <line x1="140" y1="140" x2="100" y2="110" class="figure-part" />
-            <line x1="140" y1="140" x2="180" y2="110" class="figure-part" />
-
-            <!-- Legs -->
-            <line x1="140" y1="200" x2="110" y2="250" class="figure-part" />
-            <line x1="140" y1="200" x2="170" y2="250" class="figure-part" />
-            <span class="sr-only">Overall Hangman Image</span>
-          </svg>
-        </div>
-
-        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-          <div class="text-center justify-content-center align-items-center">
-            <button id="start-btn" onclick="startGame()">Start Game</button>
-          </div>
-          <!-- Word and text input for guesses -->
-          <div class="word" id="word"></div>
-
-          <!-- Hint -->
-          <div id="hint"></div>
-
-          <!-- Calls validateForm() method to send user input to variable -->
-          <form name="userInput" id="userInput" onsubmit="return false">
-            <input type="text" maxlength="1" name="guess" id="guess" placeholder="Enter guess here"
-              aria-label="Enter guess here" />
-            <button onclick="validateForm()" id="submit-btn">Submit</button>
-          </form>
-
-          <!-- Alphabet Button for Guessing | On-screen Keyboard-->
-          <div id="key-btns">
+        <!-- Word and text input for guesses -->
+        <div class="word" id="word"></div>
+        
+        <!-- Hint -->
+        <div id="hint"></div>
+        
+        <!-- Calls validateForm() method to send user input to variable -->
+        <form name="userInput" id="userInput" onsubmit="return false">
+          <input type="text" maxlength="1" name="guess" id="guess" placeholder="Enter guess here"
+          aria-label="Enter guess here" />
+          <button onclick="validateForm()" id="submit-btn">Submit</button>
+        </form>
+        
+        <!-- Alphabet Button for Guessing | On-screen Keyboard-->
+        <div id="key-btns">
           <div class="col-12 d-flex justify-content-center">
             <button name="guess" class="guess key-btn" onclick="validateLetter('Q')">Q</button>
             <button name="guess" class="guess key-btn" onclick="validateLetter('W')">W</button>
@@ -205,36 +159,67 @@
             <button name="guess" class="guess key-btn" onclick="validateLetter('N')">N</button>
             <button name="guess" class="guess key-btn" onclick="validateLetter('M')">M</button>
           </div>
-          </div>
-
-          <!-- Error message when using duplicate letters -->
-          <p id="letter-error">This letter has been entered! Try others!</p>
-
-          <!-- Display incorrect letter guesses -->
-          <div id="wrong-letters"></div>
         </div>
+        
+        <!-- Error message when using duplicate letters -->
+        <p id="letter-error">This letter has been entered! Try others!</p>
+        
+        <!-- Display incorrect letter guesses -->
+        <div id="wrong-letters"></div>
       </div>
-      <!-- Container for final messages -->
-      <div class="final-msg-container" id="final-msg-container">
-        <div class="col-12 d-flex justify-content-center">
-          <h4 id="final-message">Final Result</h4>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <button id="play-btn" onclick="startGame()">Play Again</button>
-        </div>
+    </div>
+    <!-- Container for final messages -->
+    <div class="final-msg-container" id="final-msg-container">
+      <div class="col-12 d-flex justify-content-center">
+        <h4 id="final-message">Final Result</h4>
       </div>
-      <div class="text-center">
-        <button id="section-btn" onclick="location.href='#sectionbuff'"> Relook "How To Play"</button>
+      <div class="col-12 d-flex justify-content-center">
+        <button id="play-btn" onclick="startGame()">Play Again</button>
       </div>
+    </div>
+    <div class="text-center">
+      <button id="section-btn" onclick="location.href='#sectionbuff'"> Relook "How To Play"</button>
+    </div>
   </main>
   <!-- End Hangman game -->
-
+  
+  <div class="container game-container" id="section1" >
+    <h2 class="sub-heading">Are you up for the challenge?</h2>
+    <h2>This dictionary contains A-Z of the most uncommonly used english words</h2>
+    
+    <div class="game-container grow">
+      <h3>How To Play !!</h3>
+      <p>
+        Guess the word by inputting letters to text box.<br />
+        Incorrect letter guesses will be shown under 'Wrong Letters' on the
+        game board.<br />
+        If you guess an incorrect letter <b>10 times</b>, you will lose the
+        game.<br />
+        <b>Only</b> letters in the English alphabet will accepted. <b>Case insensitive.</b><br />
+        For multiplayer, player 1 finishes, player 2 comtinues et cetera.<br />
+        
+      </p>
+    </div>
+  </div>
+  
+  <!-- Modals -->
+  <div id="tutorial_modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div>
+        tutorail
+        aifnweoniosivonoianoinvoinooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+      </div>>
+    </div>
+  </div>
+  
+  
   <!-- Footer start -->
   <footer>
     <div class="Credits" id="creditSection">
       <h1 class="gameTitle">~~~~Credits~~~~</h1>
     </div>
-
+    
     <section class="footer text-center">
       <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
         <div class="footer__logo-wrapper">
@@ -247,110 +232,111 @@
           <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
           <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
           <li><a href="https://sg.linkedin.com/in/yeo-wei-han-130242122" target="_blank"><i
-                class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="footer text-center">
-      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-        <div class="footer__logo-wrapper">
-          <img src="assets/images/nus logo.png" alt="">
+            class="fab fa-linkedin-in"></i></a></li>
+          </ul>
         </div>
-        <p class="instructions">
-          <br />
-          Shui Mei Year 2 Computer Science
-        </p>
-        <ul class="footer__social-list">
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="footer text-center">
-      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-        <div class="footer__logo-wrapper">
-          <img src="assets/images/Temasek.png" alt="">
+      </section>
+      
+      <section class="footer text-center">
+        <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+          <div class="footer__logo-wrapper">
+            <img src="assets/images/nus logo.png" alt="">
+          </div>
+          <p class="instructions">
+            <br />
+            Shui Mei Year 2 Computer Science
+          </p>
+          <ul class="footer__social-list">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
         </div>
-        <p class="instructions">
-          <br />
-          Zayne Lee Year 3 Information Technology
-        </p>
-        <ul class="footer__social-list">
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="footer text-center">
-      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-        <div class="footer__logo-wrapper">
-          <img src="assets/images/ngee-ann-poly.png" alt="">
+      </section>
+      
+      <section class="footer text-center">
+        <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+          <div class="footer__logo-wrapper">
+            <img src="assets/images/Temasek.png" alt="">
+          </div>
+          <p class="instructions">
+            <br />
+            Zayne Lee Year 3 Information Technology
+          </p>
+          <ul class="footer__social-list">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
         </div>
-        <p class="instructions">
-          <br />
-          Ong Shi Ya alumnus Immersive Media & Game Design
-        </p>
-        
-        <ul class="footer__social-list">
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="footer text-center">
-      <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-        <div class="footer__logo-wrapper">
-          <img src="assets/images/SIT_logo.png" alt="">
+      </section>
+      
+      <section class="footer text-center">
+        <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+          <div class="footer__logo-wrapper">
+            <img src="assets/images/ngee-ann-poly.png" alt="">
+          </div>
+          <p class="instructions">
+            <br />
+            Ong Shi Ya alumnus Immersive Media & Game Design
+          </p>
+          
+          <ul class="footer__social-list">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
         </div>
-        <p class="instructions">
-          <br />
-          Zhong Hong Tao Year 3 MechanicaL Enigineering
-        </p>
-        <ul class="footer__social-list">
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
+      </section>
+      
+      <section class="footer text-center">
+        <div class="container game-container credit-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="300">
+          <div class="footer__logo-wrapper">
+            <img src="assets/images/SIT_logo.png" alt="">
+          </div>
+          <p class="instructions">
+            <br />
+            Zhong Hong Tao Year 3 MechanicaL Enigineering
+          </p>
+          <ul class="footer__social-list">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </section>
+      
+      <div id="footer_ribbon">
+        <h1 id="Text">
+          <a href="https://parade.com/1241196/marynliles/unique-words/" target="_blank"> Credits also to https://parade.com/1241196/marynliles/unique-words/</a>
+        </h1>
       </div>
-    </section>
-
-    <div id="footer_ribbon">
-      <h1 id="Text">
-        <a href="https://parade.com/1241196/marynliles/unique-words/" target="_blank"> Credits also to https://parade.com/1241196/marynliles/unique-words/</a>
-      </h1>
+    </footer>
+    <!-- Footer end -->
+    
+    <!-- Scroll-to-top button start -->
+    <div class="scroll-to-top">
+      <button id="scrollButton">
+        <a href="#"><i class="fas fa-chevron-up"></i></a>
+      </button>
     </div>
-  </footer>
-  <!-- Footer end -->
-
-  <!-- Scroll-to-top button start -->
-  <div class="scroll-to-top">
-    <button id="scrollButton">
-      <a href="#"><i class="fas fa-chevron-up"></i></a>
-    </button>
-  </div>
-  <!-- Scroll-to-top button end -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-
-  <!-- Link to external JavaScript File -->
-  <script src="assets/js/hangman.js"></script>
-
-  <!--Animation slide in-credits-->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      easing: 'ease-in-out',
-      duration: 600,
-      once: true
-    });
-  </script>
-</body>
-
-</html>
+    <!-- Scroll-to-top button end -->
+    
+    <!-- Link to external JavaScript File -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="assets/js/hangman.js"></script>
+    <script src="assets/js/modal.js"></script>
+    
+    <!--Animation slide in-credits-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        easing: 'ease-in-out',
+        duration: 600,
+        once: true
+      });
+    </script>
+  </body>
+  
+  </html>
+  
